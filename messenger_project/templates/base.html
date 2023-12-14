@@ -1,0 +1,49 @@
+<!DOCTYPE  html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}Chatapp{% endblock %}</title>
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="header">
+        {% block header%}
+          <div class="welcome-sign">
+            Приветствую дорогой <b>{{ user.username }}</b>, Добро пожаловать
+          </div>
+
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+              <button type="submit" class="btn">Выйти из системы</button>
+          </form>
+
+            <a href="/accounts/update/">
+              <button type="button" class="btn">Обновим твой профиль?</button>
+
+            </a>
+          </div>
+        {% endblock %}
+
+      </div>
+    </div>
+    <br/>
+
+
+
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+
+
+
+  </body>
+</html>

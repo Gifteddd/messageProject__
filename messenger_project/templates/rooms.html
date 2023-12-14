@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Домой{% endblock %}
+
+
+
+{% block content %}
+
+<div class="container">
+    {% if user.is_authenticated %}
+
+        <div class="sign">
+            <h3>Выберите комнату</h3>
+        </div>
+
+    {% if rooms %}
+        <div class="cards">
+            {% for room in rooms %}
+
+                <div class="room-card">
+                    <h3><a href="/{{room.slug}}">{{room.name}}</a></h3>
+                </div>
+
+            {% endfor %}
+        </div>
+</div>
+
+<div>
+    {% else %}
+        <h3>Нет доступных комнат</h3>
+    {% endif %}
+</div>
+
+
+
+{% else %}
+<div>
+    <div class="sign">
+        <h3>Хотите стать нашим посетителем?</h3>
+        <a href="/accounts/logout/">
+          <button type="button" class="btn button-center"><a href="{% url 'login' %}">Войти</a></button>
+        </a>
+      </div>
+</div>
+{% endif %}
+</div>
+
+<br/>
+
+
+
+
+
+
+{% endblock %}

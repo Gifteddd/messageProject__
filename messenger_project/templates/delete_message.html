@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div>
+        <div>
+            <div class="sign">
+                <h3>Удалить сообщение</h3>
+            </div>
+
+            <p>Вы уверены, что хотите удалить это сообщение?</p>
+
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn button-red">Удалить</button>
+                <a href="{% url 'room' slug=message.room.slug %}" class="btn button-green">Отмена</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
